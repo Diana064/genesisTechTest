@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/genesisTechTest/static/css/main.7acaea2f.css",
+    "main.js": "/genesisTechTest/static/js/main.0591463d.js",
+    "index.html": "/genesisTechTest/index.html",
+    "main.7acaea2f.css.map": "/genesisTechTest/static/css/main.7acaea2f.css.map",
+    "main.0591463d.js.map": "/genesisTechTest/static/js/main.0591463d.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7acaea2f.css",
+    "static/js/main.0591463d.js"
+  ]
+}
