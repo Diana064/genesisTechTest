@@ -1,12 +1,12 @@
 import axios from 'axios';
 
-axios.defaults.baseURL = 'https://';
+axios.defaults.baseURL = 'http://api.wisey.app/api/v1/core/preview-courses';
 
-// export const getTrendingMovies = async () => {
-//   const response = await axios.get(`trending/movie/day?api_key=${API_KEY}`);
-
-//   return response.data.results;
-// };
+export const getCourses = async () => {
+  const response = await axios.get();
+  console.log(response.data);
+  return response.data;
+};
 // export const getSearchMovies = async nameFilm => {
 //   const response = await axios.get(
 //     `search/movie?api_key=${API_KEY}&language=en-US&query=${nameFilm}&page=1&include_adult=false`

@@ -2,10 +2,10 @@ import { useState, useEffect } from 'react';
 import * as ImageService from '../components/services/api';
 
 export const ListCourses = () => {
-  const [movies, setMovies] = useState([]);
+  const [, setCourses] = useState([]);
 
   useEffect(() => {
-    ImageService.getTrendingMovies().then(setMovies);
+    ImageService.getCourses().then(setCourses);
   }, []);
   return (
     <>
