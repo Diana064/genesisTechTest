@@ -5,7 +5,7 @@ export const ListCourses = () => {
   const [, setCourses] = useState([]);
 
   useEffect(() => {
-    ImageService.getCourses().then(setCourses);
+    ImageService.getCourses();
   }, []);
   return (
     <>

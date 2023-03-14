@@ -4,8 +4,7 @@ axios.defaults.baseURL = 'http://api.wisey.app/api/v1/core/preview-courses';
 
 export const getCourses = async () => {
   const response = await axios.get();
-  console.log(response.data);
-  return response.data;
+  console.log(JSON.stringify(response.data));
 };
 // export const getSearchMovies = async nameFilm => {
 //   const response = await axios.get(
