@@ -10,8 +10,6 @@ export const Courses = () => {
 
   useEffect(() => {
     ImageService.getCourses().then(setCourses);
-
-    console.log(courses);
   }, []);
 
   return (
