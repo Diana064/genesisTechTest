@@ -1,12 +1,21 @@
 import { HoverVideo } from 'components/HoverVideo/HoverVideo';
 
+import { CourseTitle } from './CoursesItem.module';
+
 import { nanoid } from 'nanoid';
 export const CoursesItem = ({ course }) => {
   const img = `${course.previewImageLink}/cover.webp`;
+  const {
+    title = 'Missing title',
+    lessonsCount = 'Missing lessonsCount',
+    rating = 'Missing rating',
+    description = 'Missing description',
+    meta: { skills } = 'Missing skills',
+  } = course;
 
   return (
     <>
-      <h2>{course.title}</h2>
+      <CourseTitle>{title}</CourseTitle>
 
       <HoverVideo
         src={course.meta.courseVideoPreview.link}
@@ -14,16 +23,18 @@ export const CoursesItem = ({ course }) => {
         alt={course.title}
       />
 
-      <p>{course.description}</p>
+      <p>{description}</p>
 
       <ul>
-        <li>{course.lessonsCount}</li>
-        <li>{course.rating}</li>
+        <li>{lessonsCount}</li>
+        <li>{rating}</li>
         <li>
           <ul>
-            {course.meta.skills.map(skill => (
-              <li key={nanoid()}>{skill}</li>
-            ))}
+            {skills ? (
+              skills.map(skill => <li key={nanoid()}>{skill}</li>)
+            ) : (
+              <p>Missing skills</p>
+            )}
           </ul>
         </li>
       </ul>

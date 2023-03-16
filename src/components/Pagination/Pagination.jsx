@@ -1,8 +1,4 @@
-import { useState } from 'react';
-function Pagination({ courses, pageSize }) {
-  const [currentPage, setCurrentPage] = useState(1);
-  const totalPages = Math.ceil(courses.length / pageSize);
-
+function Pagination({ currentPage, totalPages, setCurrentPage, pageSize }) {
   const goToPreviousPage = () => {
     setCurrentPage(currentPage => Math.max(currentPage - 1, 1));
   };

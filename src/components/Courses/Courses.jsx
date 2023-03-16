@@ -5,14 +5,15 @@ import Pagination from 'components/Pagination/Pagination';
 import { CoursesItem } from './CoursesItem/CoursesItem';
 import { CoursesList, CourseItemWrapper, StyledLink } from './Courses.module';
 
-// import { Pagination } from 'components/Pagination/Pagination';
-
 export const Courses = () => {
   const [courses, setCourses] = useState([]);
   const [loading, setLoading] = useState(false);
   const location = useLocation();
-  const [startIndex] = useState(1);
-  const [endIndex] = useState(11);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [pageSize] = useState(10);
+  const totalPages = Math.ceil(courses.length / pageSize);
+  const startIndex = (currentPage - 1) * pageSize;
+  const endIndex = Math.min(startIndex + pageSize, courses.length);
 
   useEffect(() => {
     async function fetchData() {
@@ -29,10 +30,11 @@ export const Courses = () => {
     fetchData();
   }, []);
 
+  console.log(startIndex, endIndex);
   return (
     <>
       <div>
-        {!loading && (
+        {!loading && courses ? (
           <>
             <CoursesList>
               {courses.slice(startIndex, endIndex).map(course => (
@@ -46,8 +48,15 @@ export const Courses = () => {
                 </CourseItemWrapper>
               ))}
             </CoursesList>
-            <Pagination courses={courses} pageSize={10} />
+            <Pagination
+              currentPage={currentPage}
+              totalPages={totalPages}
+              setCurrentPage={setCurrentPage}
+              pageSize={pageSize}
+            />
           </>
+        ) : (
+          <p>Loading...</p>
         )}
       </div>
     </>

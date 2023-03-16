@@ -6,6 +6,7 @@ const token =
 
 export const getCourses = async () => {
   const response = await axios.get(`${token}`);
+  console.log(response.data.courses);
   return response.data.courses;
 };
 export const getCoursById = async courseId => {

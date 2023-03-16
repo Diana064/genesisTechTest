@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import ReactPlayer from 'react-player';
+
+import { IMG, HoverPlayer, HoverPlayerWrapper } from './HoverVideo.module';
 export const HoverVideo = ({ src, img, alt }) => {
   const [hover, setHover] = useState(false);
   const handleMouseEnter = () => {
@@ -9,12 +10,22 @@ export const HoverVideo = ({ src, img, alt }) => {
     setHover(false);
   };
   return (
-    <div onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+    <HoverPlayerWrapper
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
       {hover ? (
-        <ReactPlayer playing={true} url={src} type="video/hls" muted={true} />
+        <HoverPlayer
+          width="100%"
+          height="100%"
+          playing={true}
+          url={src}
+          type="video/hls"
+          muted={true}
+        />
       ) : (
-        <img src={img} alt={alt} />
+        <IMG src={img} alt={alt} />
       )}
-    </div>
+    </HoverPlayerWrapper>
   );
 };
