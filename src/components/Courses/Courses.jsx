@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
 import * as ImageService from '../services/api';
 import { useLocation } from 'react-router-dom';
 import Pagination from 'components/Pagination/Pagination';
