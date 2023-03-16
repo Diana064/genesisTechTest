@@ -16,9 +16,7 @@ export const Courses = () => {
 
   useEffect(() => {
     setLoading(true);
-    ImageService.getCourses().then(setCourses);
-
-    setLoading(false);
+    ImageService.getCourses().then(setCourses).finally(setLoading(false));
   }, []);
 
   return (

@@ -11,7 +11,7 @@ export const HoverVideo = ({ src, img, alt }) => {
   return (
     <div onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
       {hover ? (
-        <ReactPlayer playing={true} url={src} type="video/hls" />
+        <ReactPlayer playing={true} url={src} type="video/hls" muted={true} />
       ) : (
         <img src={img} alt={alt} />
       )}
