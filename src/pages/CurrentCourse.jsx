@@ -13,14 +13,23 @@ export const CurrentCourse = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    setIsLoading(true);
-    ImageService.getCoursById(courseId)
-      .then(setCourse)
-      .finally(setIsLoading(false));
+    async function fetchData() {
+      setIsLoading(true);
+      try {
+        const response = await ImageService.getCoursById(courseId);
+        setCourse(response);
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setIsLoading(false);
+      }
+    }
+    fetchData();
   }, [courseId]);
   const handleGoBack = () => {
     navigate(location.state.from);
   };
+
   if (!course) {
     return;
   }
@@ -31,8 +40,8 @@ export const CurrentCourse = () => {
         <>
           <CourseById
             course={course}
-            courseId={courseId}
             handleGoBack={handleGoBack}
+            isLoading={isLoading}
           />
           <NavLink to="lessons" state={location.state}>
             Lessons

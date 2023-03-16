@@ -15,8 +15,18 @@ export const Courses = () => {
   const [endIndex] = useState(11);
 
   useEffect(() => {
-    setLoading(true);
-    ImageService.getCourses().then(setCourses).finally(setLoading(false));
+    async function fetchData() {
+      setLoading(true);
+      try {
+        const response = await ImageService.getCourses();
+        setCourses(response);
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchData();
   }, []);
 
   return (
