@@ -3,7 +3,14 @@ import * as ImageService from '../services/api';
 import { useLocation } from 'react-router-dom';
 import Pagination from 'components/Pagination/Pagination';
 import { CoursesItem } from './CoursesItem/CoursesItem';
-import { CoursesList, CourseItemWrapper, StyledLink } from './Courses.module';
+import {
+  CoursesList,
+  CourseItemWrapper,
+  StyledLink,
+  Title,
+  CourseListWrapper,
+} from './Courses.module';
+import { Loader } from 'components/Loading/Loading';
 
 export const Courses = () => {
   const [courses, setCourses] = useState([]);
@@ -33,9 +40,10 @@ export const Courses = () => {
   console.log(startIndex, endIndex);
   return (
     <>
-      <div>
+      <CourseListWrapper>
         {!loading && courses ? (
           <>
+            <Title>List of courses</Title>
             <CoursesList>
               {courses.slice(startIndex, endIndex).map(course => (
                 <CourseItemWrapper key={course.id}>
@@ -56,9 +64,9 @@ export const Courses = () => {
             />
           </>
         ) : (
-          <p>Loading...</p>
+          <Loader />
         )}
-      </div>
+      </CourseListWrapper>
     </>
   );
 };

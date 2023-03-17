@@ -2,21 +2,18 @@ export const theme = {
   colors: {
     black: '#000',
     white: '#fff',
-    border: '#1e0000',
     subtitle: '#500805',
-    title: '#c8000a',
-    back: '#f4ebdb',
+    title: '#000',
+    border: '#A1D6E2',
+    back: '#fff',
+    backCourse: '#F1F1F2',
     mainText: '#896e69',
     peach: '#ffa577',
-    text: '#bc6d4f',
+    text: '#313436',
   },
   space: [0, 2, 4, 8, 16, 32, 64, 128, 256],
   gap: [10, 15, 17, 20, 25, 30],
-  fonts: {
-    body: 'system-ui, sans-serif',
-    heading: 'system-ui, sans-serif',
-    monospace: 'Menlo, monospace',
-  },
+
   fontSizes: {
     xs: '12px',
     s: '14px',
@@ -35,6 +32,7 @@ export const theme = {
   borders: {
     none: 'none',
     normal: '1px solid',
+    big: '2px solid',
   },
   radii: {
     none: '0',

@@ -3,8 +3,7 @@ import { useState, useEffect } from 'react';
 import * as ImageService from '../components/services/api';
 import { useParams } from 'react-router';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { NavLink } from 'react-router-dom';
-import { Outlet } from 'react-router';
+import { Loader } from 'components/Loading/Loading';
 export const CurrentCourse = () => {
   const [course, setCourse] = useState([]);
   const { courseId } = useParams();
@@ -36,18 +35,16 @@ export const CurrentCourse = () => {
 
   return (
     <>
-      {!isLoading && (
+      {!isLoading ? (
         <>
           <CourseById
             course={course}
             handleGoBack={handleGoBack}
             isLoading={isLoading}
           />
-          <NavLink to="lessons" state={location.state}>
-            Lessons
-          </NavLink>
-          <Outlet />
         </>
+      ) : (
+        <Loader />
       )}
     </>
   );

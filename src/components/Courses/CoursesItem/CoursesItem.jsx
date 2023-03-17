@@ -1,6 +1,13 @@
 import { HoverVideo } from 'components/HoverVideo/HoverVideo';
 
-import { CourseTitle } from './CoursesItem.module';
+import {
+  CourseTitle,
+  TextWrapper,
+  TextSubtitle,
+  SkillsList,
+  SkillsItem,
+  SkillsIcon,
+} from './CoursesItem.module';
 
 import { nanoid } from 'nanoid';
 export const CoursesItem = ({ course }) => {
@@ -12,32 +19,51 @@ export const CoursesItem = ({ course }) => {
     description = 'Missing description',
     meta: { skills } = 'Missing skills',
   } = course;
-
+  const defaultSrc =
+    'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4';
   return (
     <>
       <CourseTitle>{title}</CourseTitle>
 
       <HoverVideo
-        src={course.meta.courseVideoPreview.link}
+        src={
+          course.meta.courseVideoPreview
+            ? course.meta.courseVideoPreview.link
+            : defaultSrc
+        }
         img={img}
         alt={course.title}
       />
+      <TextWrapper>
+        <p>
+          <TextSubtitle>Title of course:</TextSubtitle>
+          {description}
+        </p>
 
-      <p>{description}</p>
-
-      <ul>
-        <li>{lessonsCount}</li>
-        <li>{rating}</li>
-        <li>
-          <ul>
-            {skills ? (
-              skills.map(skill => <li key={nanoid()}>{skill}</li>)
-            ) : (
-              <p>Missing skills</p>
-            )}
-          </ul>
-        </li>
-      </ul>
+        <p>
+          <TextSubtitle>Lessons count:</TextSubtitle>
+          {lessonsCount}
+        </p>
+        <p>
+          <TextSubtitle>Rating:</TextSubtitle>
+          {rating}
+        </p>
+        <p>
+          <TextSubtitle>Skills:</TextSubtitle>
+        </p>
+        <SkillsList>
+          {skills ? (
+            skills.map(skill => (
+              <SkillsItem key={nanoid()}>
+                <SkillsIcon />
+                {skill}
+              </SkillsItem>
+            ))
+          ) : (
+            <p>Missing skills</p>
+          )}
+        </SkillsList>
+      </TextWrapper>
     </>
   );
 };

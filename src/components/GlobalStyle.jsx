@@ -10,8 +10,9 @@ export const GlobalStyle = createGlobalStyle`
   body {
     min-height: 100vh;
     margin: 0;
-    font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Oxygen', 'Ubuntu',
-    'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    /* font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Oxygen', 'Ubuntu',
+    'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif; */
+    font-family: 'Montserrat', sans-serif;
     background-color: ${p => p.theme.colors.back};
     color: #010101;
     line-height: 1.5;
@@ -27,6 +28,7 @@ export const GlobalStyle = createGlobalStyle`
     padding: 0;
     margin: 0;
     list-style: none;
+    cursor: pointer;
   }
   h1,
   h2,
