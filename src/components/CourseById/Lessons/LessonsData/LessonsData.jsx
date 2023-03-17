@@ -7,7 +7,9 @@ export const LessonData = ({ lesson }) => {
   const playbackRate = usePlaybackRate(1);
   const defaultSrc =
     'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4';
-  const img = `${lesson.previewImageLink}/${lesson.order}.webp`;
+  const img = lesson?.previewImageLink
+    ? `${lesson.previewImageLink}/${lesson.order}.webp`
+    : 'https://propertywiselaunceston.com.au/wp-content/themes/property-wise/images/no-image.png';
 
   const [lessonPlayed, setLessonPlayed] = useLocalStorage('lessonTime', {
     playedSeconds: 0,
@@ -19,8 +21,7 @@ export const LessonData = ({ lesson }) => {
     if (lessonRef.current) {
       lessonRef.current.seekTo(lessonPlayed.playedSeconds);
     }
-    console.log(lessonPlayed);
-  }, [lessonRef.current]);
+  }, [lessonPlayed.playedSeconds]);
 
   function lessonTime(e) {
     const progress = { ...lessonPlayed, playedSeconds: e };
@@ -42,20 +43,20 @@ export const LessonData = ({ lesson }) => {
           </p>
           <p>
             <TextSubtitle>Video of lesson</TextSubtitle>
-            <ReactPlayer
-              ref={lessonRef}
-              playing={false}
-              muted={true}
-              url={lesson?.link ? lesson.link : defaultSrc}
-              type="video/hls"
-              controls
-              onProgress={progress => {
-                lessonTime(progress.playedSeconds);
-              }}
-              pip={true}
-              playbackRate={playbackRate}
-            />
           </p>
+          <ReactPlayer
+            ref={lessonRef}
+            playing={false}
+            muted={true}
+            url={lesson?.link ? lesson.link : defaultSrc}
+            type="video/hls"
+            controls
+            onProgress={progress => {
+              lessonTime(progress.playedSeconds);
+            }}
+            pip={true}
+            playbackRate={playbackRate}
+          />
         </>
       )}
     </>

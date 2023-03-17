@@ -20,15 +20,19 @@ export const CourseById = ({ course, handleGoBack }) => {
   const [played, setPlayed] = useLocalStorage('progressTime', {
     playedSeconds: 0,
   });
+  const defaultSrc =
+    'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4';
   const playbackRate = usePlaybackRate(1);
-
+  const src = course?.meta?.courseVideoPreview?.link
+    ? course.meta.courseVideoPreview.link
+    : defaultSrc;
   const playerRef = useRef(null);
 
   useEffect(() => {
     if (playerRef.current) {
       playerRef.current.seekTo(played.playedSeconds);
     }
-  }, [playerRef.current]);
+  }, [played.playedSeconds]);
 
   function progressTime(e) {
     const progress = { ...played, playedSeconds: e };
@@ -51,7 +55,7 @@ export const CourseById = ({ course, handleGoBack }) => {
               <ReactPlayer
                 ref={playerRef}
                 playing={true}
-                url={course?.meta?.courseVideoPreview?.link}
+                url={src}
                 type="video/hls"
                 muted={true}
                 controls
