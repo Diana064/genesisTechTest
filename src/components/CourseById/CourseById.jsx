@@ -13,6 +13,7 @@ import {
   ContenxtWrapper,
   TitleWrapper,
   ContentWrapper,
+  VideoPlayer,
 } from './СourseById.module';
 import { Lessons } from './Lessons/Lessons';
 
@@ -53,7 +54,9 @@ export const CourseById = ({ course, handleGoBack }) => {
           </TitleWrapper>
           <ContenxtWrapper>
             <VideoWrapper>
-              <ReactPlayer
+              <VideoPlayer
+                width="100%"
+                height="100%"
                 ref={playerRef}
                 playing={true}
                 url={src}

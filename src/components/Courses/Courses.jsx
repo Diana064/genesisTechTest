@@ -41,7 +41,9 @@ export const Courses = () => {
   console.log(startIndex, endIndex);
   return (
     <>
-      {!error && (
+      {error ? (
+        <>{error.message}</>
+      ) : (
         <>
           <CourseListWrapper>
             {!loading && courses ? (

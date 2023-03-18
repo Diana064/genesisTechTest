@@ -36,7 +36,9 @@ export const CurrentCourse = () => {
 
   return (
     <>
-      {!error && (
+      {error ? (
+        <>{error.message}</>
+      ) : (
         <>
           {!isLoading ? (
             <>

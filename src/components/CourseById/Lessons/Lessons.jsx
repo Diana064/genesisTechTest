@@ -6,6 +6,8 @@ import {
   UnLockIcon,
   Button,
   CourseTitle,
+  LessonsList,
+  LessonsListItem,
 } from './Lessons.module';
 import { LessonData } from './LessonsData/LessonsData';
 
@@ -36,10 +38,10 @@ export const Lessons = ({ course }) => {
     <TextWrapper>
       <CourseTitle>List of lessons: </CourseTitle>
       {containsLockedLessons && (lessons || []).length ? (
-        <ul>
+        <LessonsList>
           {lessons.map(lesson => {
             return lesson.status === 'unlocked' ? (
-              <li key={nanoid()}>
+              <LessonsListItem key={nanoid()}>
                 <Button
                   type="button"
                   onClick={() => handleLessonClick(lesson.id)}
@@ -48,28 +50,28 @@ export const Lessons = ({ course }) => {
                   {lesson.title}
                 </Button>
                 {detailedLessons[lesson.id] && <LessonData lesson={lesson} />}
-              </li>
+              </LessonsListItem>
             ) : (
-              <li key={nanoid()}>
+              <LessonsListItem key={nanoid()}>
                 <p>
                   <LockIcon />
                   {`${lesson.title} disabled`}
                 </p>
-              </li>
+              </LessonsListItem>
             );
           })}
-        </ul>
+        </LessonsList>
       ) : (
-        <ul>
+        <LessonsList>
           {(lessons || []).map(lesson => (
-            <li key={nanoid()}>
+            <LessonsListItem key={nanoid()}>
               <p>
                 <LockIcon />
                 {`${lesson.title} `}
               </p>
-            </li>
+            </LessonsListItem>
           ))}
-        </ul>
+        </LessonsList>
       )}
     </TextWrapper>
   );

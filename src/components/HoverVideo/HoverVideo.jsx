@@ -9,6 +9,7 @@ export const HoverVideo = ({ src, img, alt }) => {
   const handleMouseLeave = () => {
     setHover(false);
   };
+
   return (
     <HoverPlayerWrapper
       onMouseEnter={handleMouseEnter}

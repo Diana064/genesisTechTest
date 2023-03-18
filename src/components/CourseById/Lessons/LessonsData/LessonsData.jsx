@@ -2,7 +2,13 @@ import { useEffect, useRef } from 'react';
 import ReactPlayer from 'react-player';
 import { usePlaybackRate } from 'components/VideoSpeed/VideoSpeed';
 import { useLocalStorage } from 'components/hooks/UseLocaleStorage';
-import { TextSubtitle, Img } from './LessonsData.module';
+import {
+  TextSubtitle,
+  Img,
+  LessonsDataWrapper,
+  VideoWrapper,
+  Text,
+} from './LessonsData.module';
 export const LessonData = ({ lesson }) => {
   const playbackRate = usePlaybackRate(1);
   const defaultSrc =
@@ -31,33 +37,37 @@ export const LessonData = ({ lesson }) => {
   return (
     <>
       {lesson && (
-        <>
-          <p>
+        <LessonsDataWrapper>
+          <Text>
             <TextSubtitle>Number of lesson</TextSubtitle>
             {lesson.duration}
-          </p>
+          </Text>
 
-          <p>
+          <Text>
             <TextSubtitle>Photo of lesson</TextSubtitle>
             <Img src={img} width="300" height="200" alt="img of lesson" />
-          </p>
-          <p>
+          </Text>
+          <Text>
             <TextSubtitle>Video of lesson</TextSubtitle>
-          </p>
-          <ReactPlayer
-            ref={lessonRef}
-            playing={false}
-            muted={true}
-            url={lesson?.link ? lesson.link : defaultSrc}
-            type="video/hls"
-            controls
-            onProgress={progress => {
-              lessonTime(progress.playedSeconds);
-            }}
-            pip={true}
-            playbackRate={playbackRate}
-          />
-        </>
+          </Text>
+          <VideoWrapper>
+            <ReactPlayer
+              width="100%"
+              height="100%"
+              ref={lessonRef}
+              playing={false}
+              muted={true}
+              url={lesson?.link ? lesson.link : defaultSrc}
+              type="video/hls"
+              controls
+              onProgress={progress => {
+                lessonTime(progress.playedSeconds);
+              }}
+              pip={true}
+              playbackRate={playbackRate}
+            />
+          </VideoWrapper>
+        </LessonsDataWrapper>
       )}
     </>
   );

@@ -38,9 +38,16 @@ export const CourseItemWrapper = styled.li`
   justify-content: center;
   border: ${p => p.theme.borders.big};
   border-color: ${p => p.theme.colors.border};
+
   &:hover {
     transform: scale(1.05);
     border-color: ${p => p.theme.colors.border};
+  }
+  @media (max-width: 550px) {
+    transform: scale(0.95);
+    &:hover {
+      transform: scale(1);
+    }
   }
 `;
 export const CourseListWrapper = styled.div`

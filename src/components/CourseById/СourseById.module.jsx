@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import ReactPlayer from 'react-player';
 
 import { FiArrowLeft } from 'react-icons/fi';
 export const IconGoBack = styled(FiArrowLeft)`
@@ -19,16 +20,28 @@ export const Button = styled.button`
     color: ${p => p.theme.colors.border};
     border-color: ${p => p.theme.colors.border};
   }
+  @media (max-width: 650px) {
+    width: 90px;
+    height: 30px;
+    padding: 10px;
+    font-size: ${p => p.theme.fontSizes.xs};
+  }
 `;
 export const Title = styled.h2`
   text-align: center;
   font-size: ${p => p.theme.fontSizes.xl};
   margin: 0 0 50px;
+  @media (max-width: 950px) {
+    font-size: ${p => p.theme.fontSizes.l};
+    margin: 10px 0 30px;
+  }
 `;
 export const VideoWrapper = styled.div`
+  margin: 0 auto;
   padding: ${p => p.theme.gap[4]}px;
   color: ${p => p.theme.colors.text};
   display: flex;
+  min-width: 275px;
   flex-direction: column;
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
     1px 4px 6px rgba(0, 0, 0, 0.16);
@@ -47,10 +60,14 @@ export const ContenxtWrapper = styled.div`
   flex-direction: row;
   gap: 50px;
   justify-content: center;
-  margin-bottom: ${p => p.theme.gap[5]}px; ;
+  margin-bottom: ${p => p.theme.gap[5]}px;
+  @media (max-width: 1200px) {
+    flex-wrap: wrap;
+  }
 `;
 export const TitleWrapper = styled.div``;
 export const ContentWrapper = styled.div`
   padding: 30px;
   flex-wrap: wrap;
 `;
+export const VideoPlayer = styled(ReactPlayer)``;
