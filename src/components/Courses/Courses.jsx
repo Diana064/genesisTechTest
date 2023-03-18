@@ -17,6 +17,7 @@ export const Courses = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const location = useLocation();
+  // Variables for pagination
   const [currentPage, setCurrentPage] = useState(1);
   const [pageSize] = useState(10);
   const totalPages = Math.ceil(courses.length / pageSize);
@@ -38,7 +39,6 @@ export const Courses = () => {
     fetchData();
   }, []);
 
-  console.log(startIndex, endIndex);
   return (
     <>
       {error ? (

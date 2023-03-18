@@ -1,8 +1,9 @@
 import { useState } from 'react';
-
 import { IMG, HoverPlayer, HoverPlayerWrapper } from './HoverVideo.module';
+
 export const HoverVideo = ({ src, img, alt }) => {
   const [hover, setHover] = useState(false);
+
   const handleMouseEnter = () => {
     setHover(true);
   };

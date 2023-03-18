@@ -5,6 +5,7 @@ export const LoaderWrapper = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: center;
+
   margin-top: 200px;
   gap: ${p => p.theme.gap[4]}px;
 `;

@@ -1,4 +1,5 @@
 import { CourseTitle, Button, IntructionWrapper } from './Instruction.module';
+
 export const InstructionVolume = () => {
   return (
     <IntructionWrapper>

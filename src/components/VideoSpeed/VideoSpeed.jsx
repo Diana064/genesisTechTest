@@ -11,7 +11,6 @@ export function usePlaybackRate(initialRate) {
         setPlaybackRate(prevPlaybackRate => prevPlaybackRate - 0.25);
       }
     }
-
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [playbackRate]);

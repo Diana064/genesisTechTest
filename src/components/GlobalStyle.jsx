@@ -10,8 +10,6 @@ export const GlobalStyle = createGlobalStyle`
   body {
     min-height: 100vh;
     margin: 0;
-    /* font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Oxygen', 'Ubuntu',
-    'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif; */
     font-family: 'Montserrat', sans-serif;
     background-color: ${p => p.theme.colors.back};
     color: #010101;

@@ -10,18 +10,16 @@ import {
   Text,
 } from './LessonsData.module';
 export const LessonData = ({ lesson }) => {
+  const [lessonPlayed, setLessonPlayed] = useLocalStorage('lessonTime', {
+    playedSeconds: 0,
+  });
   const playbackRate = usePlaybackRate(1);
+  const lessonRef = useRef(null);
   const defaultSrc =
     'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4';
   const img = lesson?.previewImageLink
     ? `${lesson.previewImageLink}/${lesson.order}.webp`
     : 'https://propertywiselaunceston.com.au/wp-content/themes/property-wise/images/no-image.png';
-
-  const [lessonPlayed, setLessonPlayed] = useLocalStorage('lessonTime', {
-    playedSeconds: 0,
-  });
-
-  const lessonRef = useRef(null);
 
   useEffect(() => {
     if (lessonRef.current) {

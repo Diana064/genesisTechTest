@@ -1,5 +1,4 @@
 import { HoverVideo } from 'components/HoverVideo/HoverVideo';
-
 import {
   CourseTitle,
   TextWrapper,
@@ -11,7 +10,6 @@ import {
 
 import { nanoid } from 'nanoid';
 export const CoursesItem = ({ course }) => {
-  const img = `${course.previewImageLink}/cover.webp`;
   const {
     title = 'Missing title',
     lessonsCount = 'Missing lessonsCount',
@@ -21,6 +19,7 @@ export const CoursesItem = ({ course }) => {
   } = course;
   const defaultSrc =
     'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4';
+  const img = `${course.previewImageLink}/cover.webp`;
   return (
     <>
       <CourseTitle>{title}</CourseTitle>

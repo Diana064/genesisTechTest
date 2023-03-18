@@ -1,4 +1,3 @@
-import ReactPlayer from 'react-player';
 import { useLocalStorage } from 'components/hooks/UseLocaleStorage';
 import { useEffect } from 'react';
 import { usePlaybackRate } from 'components/VideoSpeed/VideoSpeed';
@@ -21,14 +20,14 @@ export const CourseById = ({ course, handleGoBack }) => {
   const [played, setPlayed] = useLocalStorage('progressTime', {
     playedSeconds: 0,
   });
+  const playbackRate = usePlaybackRate(1);
+  const playerRef = useRef(null);
 
   const defaultSrc =
     'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4';
-  const playbackRate = usePlaybackRate(1);
   const src = course?.meta?.courseVideoPreview?.link
     ? course.meta.courseVideoPreview.link
     : defaultSrc;
-  const playerRef = useRef(null);
 
   useEffect(() => {
     if (playerRef.current) {

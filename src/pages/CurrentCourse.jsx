@@ -26,6 +26,7 @@ export const CurrentCourse = () => {
     }
     fetchData();
   }, [courseId]);
+
   const handleGoBack = () => {
     navigate(location.state.from);
   };
