@@ -8,7 +8,10 @@ export const TextSubtitle = styled.span`
 
 export const Img = styled.img`
   display: flex;
+
   width: 100%;
+  height: auto;
+
   margin: 0 auto;
 `;
 export const LessonsDataWrapper = styled.div`

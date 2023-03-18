@@ -18,7 +18,7 @@ export const LessonData = ({ lesson }) => {
   const defaultSrc =
     'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4';
   const img = lesson?.previewImageLink
-    ? `${lesson.previewImageLink}/${lesson.order}.webp`
+    ? `${lesson.previewImageLink}/lesson-${lesson.order}.webp`
     : 'https://propertywiselaunceston.com.au/wp-content/themes/property-wise/images/no-image.png';
 
   useEffect(() => {
