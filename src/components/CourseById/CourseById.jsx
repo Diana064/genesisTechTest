@@ -20,6 +20,7 @@ export const CourseById = ({ course, handleGoBack }) => {
   const [played, setPlayed] = useLocalStorage('progressTime', {
     playedSeconds: 0,
   });
+
   const defaultSrc =
     'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4';
   const playbackRate = usePlaybackRate(1);

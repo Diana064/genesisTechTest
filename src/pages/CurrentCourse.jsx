@@ -6,6 +6,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { Loader } from 'components/Loading/Loading';
 export const CurrentCourse = () => {
   const [course, setCourse] = useState([]);
+  const [error, setError] = useState('');
   const { courseId } = useParams();
   const navigate = useNavigate();
   const location = useLocation();
@@ -18,7 +19,7 @@ export const CurrentCourse = () => {
         const response = await ImageService.getCoursById(courseId);
         setCourse(response);
       } catch (error) {
-        console.log(error);
+        setError(error);
       } finally {
         setIsLoading(false);
       }
@@ -35,16 +36,20 @@ export const CurrentCourse = () => {
 
   return (
     <>
-      {!isLoading ? (
+      {!error && (
         <>
-          <CourseById
-            course={course}
-            handleGoBack={handleGoBack}
-            isLoading={isLoading}
-          />
+          {!isLoading ? (
+            <>
+              <CourseById
+                course={course}
+                handleGoBack={handleGoBack}
+                isLoading={isLoading}
+              />
+            </>
+          ) : (
+            <Loader />
+          )}
         </>
-      ) : (
-        <Loader />
       )}
     </>
   );

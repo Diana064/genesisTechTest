@@ -15,6 +15,7 @@ import { Loader } from 'components/Loading/Loading';
 export const Courses = () => {
   const [courses, setCourses] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
   const location = useLocation();
   const [currentPage, setCurrentPage] = useState(1);
   const [pageSize] = useState(10);
@@ -29,7 +30,7 @@ export const Courses = () => {
         const response = await ImageService.getCourses();
         setCourses(response);
       } catch (error) {
-        console.log(error);
+        setError(error);
       } finally {
         setLoading(false);
       }
@@ -40,33 +41,37 @@ export const Courses = () => {
   console.log(startIndex, endIndex);
   return (
     <>
-      <CourseListWrapper>
-        {!loading && courses ? (
-          <>
-            <Title>List of courses</Title>
-            <CoursesList>
-              {courses.slice(startIndex, endIndex).map(course => (
-                <CourseItemWrapper key={course.id}>
-                  <StyledLink
-                    to={`/course/${course.id}`}
-                    state={{ from: location }}
-                  >
-                    <CoursesItem course={course} />
-                  </StyledLink>
-                </CourseItemWrapper>
-              ))}
-            </CoursesList>
-            <Pagination
-              currentPage={currentPage}
-              totalPages={totalPages}
-              setCurrentPage={setCurrentPage}
-              pageSize={pageSize}
-            />
-          </>
-        ) : (
-          <Loader />
-        )}
-      </CourseListWrapper>
+      {!error && (
+        <>
+          <CourseListWrapper>
+            {!loading && courses ? (
+              <>
+                <Title>List of courses</Title>
+                <CoursesList>
+                  {courses.slice(startIndex, endIndex).map(course => (
+                    <CourseItemWrapper key={course.id}>
+                      <StyledLink
+                        to={`/course/${course.id}`}
+                        state={{ from: location }}
+                      >
+                        <CoursesItem course={course} />
+                      </StyledLink>
+                    </CourseItemWrapper>
+                  ))}
+                </CoursesList>
+                <Pagination
+                  currentPage={currentPage}
+                  totalPages={totalPages}
+                  setCurrentPage={setCurrentPage}
+                  pageSize={pageSize}
+                />
+              </>
+            ) : (
+              <Loader />
+            )}
+          </CourseListWrapper>
+        </>
+      )}
     </>
   );
 };
