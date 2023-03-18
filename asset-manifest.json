@@ -1,12 +1,12 @@
 {
   "files": {
     "main.css": "/genesisTechTest/static/css/main.31d6cfe0.css",
-    "main.js": "/genesisTechTest/static/js/main.4399d07a.js",
+    "main.js": "/genesisTechTest/static/js/main.ba338650.js",
     "index.html": "/genesisTechTest/index.html",
-    "main.4399d07a.js.map": "/genesisTechTest/static/js/main.4399d07a.js.map"
+    "main.ba338650.js.map": "/genesisTechTest/static/js/main.ba338650.js.map"
   },
   "entrypoints": [
     "static/css/main.31d6cfe0.css",
-    "static/js/main.4399d07a.js"
+    "static/js/main.ba338650.js"
   ]
 }
